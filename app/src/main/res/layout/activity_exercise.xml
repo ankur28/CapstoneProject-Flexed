@@ -41,7 +41,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExerciseActivity">
+        app:layout_constraintTop_toBottomOf="@id/toolbarExerciseActivity"
+        tools:visibility="visible">
+
         <ProgressBar
             android:id="@+id/ProBar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -70,6 +72,57 @@
                 tools:text="10"/>
     </LinearLayout>
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvnextWorkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UPCOMING EXERCISE: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flProgress"
+        app:layout_constraintBottom_toTopOf="@id/tvnextWorkoutName"
+        tools:visibility="visible" />
+    <TextView
+        android:id="@+id/tvnextWorkoutName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvnextWorkout"
+        tools:visibility="visible" />
+    
+    <ImageView
+        android:id="@+id/wimage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_jumping_jacks"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/tvWorkout"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarExerciseActivity" />
+    <TextView
+        android:id="@+id/tvWorkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ExerciseName"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wimage"
+        tools:visibility="visible" />
+
+
+    
     <FrameLayout
         android:id="@+id/flExercise"
         android:layout_width="100dp"
@@ -81,7 +134,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExerciseActivity">
+        app:layout_constraintTop_toBottomOf="@id/tvWorkout">
         <ProgressBar
             android:id="@+id/ProBarExercise"
             style="?android:attr/progressBarStyleHorizontal"

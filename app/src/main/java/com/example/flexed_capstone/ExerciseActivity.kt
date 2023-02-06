@@ -6,7 +6,6 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import com.example.flexed_capstone.databinding.ActivityExerciseBinding
-import com.example.flexed_capstone.databinding.ActivityMainBinding
 
 class ExerciseActivity : AppCompatActivity() {
     private var binding: ActivityExerciseBinding? = null
@@ -15,6 +14,11 @@ private var timerest: CountDownTimer? = null
 
     private var exerciseTime : CountDownTimer? = null
     private var progExercise = 0
+
+    //workout model
+    private var workoutList:ArrayList<WorkoutModel>? = null
+    private var currentWorkoutPosition = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -25,28 +29,58 @@ private var timerest: CountDownTimer? = null
         if(supportActionBar != null){
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
+
+        //workout list
+        workoutList= Constants.exerciseList()
+
+
         binding?.toolbarExerciseActivity?.setNavigationOnClickListener {
             onBackPressed()
         }
 restSetup()
     }
     private fun restSetup(){
+
+        binding?.flProgress?.visibility = View.VISIBLE
+
+        binding?.tvTitleTextView?.visibility =View.VISIBLE
+        binding?.tvWorkout?.visibility= View.INVISIBLE
+        binding?.flExercise?.visibility = View.INVISIBLE
+
+        binding?.wimage?.visibility= View.INVISIBLE
+
+        binding?.tvnextWorkout?.visibility=View.VISIBLE
+        binding?.tvnextWorkoutName?.visibility=View.VISIBLE
+
         if(timerest != null){
             timerest?.cancel()
             progresRest = 0
         }
+
+        binding?.tvnextWorkoutName?.text = workoutList!![currentWorkoutPosition +1].getName()
         setProBar()
     }
 
-    private fun setuoExcercise(){
+    private fun setupExercise(){
         binding?.flProgress?.visibility = View.INVISIBLE
-        binding?.tvTitleTextView?.text= "Exercise Name"
+
+        binding?.tvTitleTextView?.visibility =View.INVISIBLE
+        binding?.tvWorkout?.visibility= View.VISIBLE
         binding?.flExercise?.visibility = View.VISIBLE
+
+        binding?.wimage?.visibility= View.VISIBLE
+
+        binding?.tvnextWorkout?.visibility=View.INVISIBLE
+        binding?.tvnextWorkoutName?.visibility=View.INVISIBLE
         if(exerciseTime != null){
             exerciseTime?.cancel()
             progExercise=0
         }
-        setExcerciseBar()
+
+        binding?.wimage?.setImageResource(workoutList!![currentWorkoutPosition].getPic())
+        binding?.tvWorkout?.text = workoutList!![currentWorkoutPosition].getName()
+
+        setExerciseBar()
     }
     private fun setProBar(){
         binding?.ProBar?.progress = progresRest
@@ -58,11 +92,13 @@ restSetup()
             }
 
             override fun onFinish() {
-              setuoExcercise()
+
+                currentWorkoutPosition++
+                setupExercise()
             }
         }.start()
     }
-    private fun setExcerciseBar(){
+    private fun setExerciseBar(){
         binding?.ProBarExercise?.progress = progExercise
         exerciseTime = object : CountDownTimer(30000, 1000){
             override fun onTick(p0: Long) {
@@ -72,12 +108,15 @@ restSetup()
             }
 
             override fun onFinish() {
-                Toast.makeText(
-                    this@ExerciseActivity,
-                    "30 Seconds are over, lets go to the rest view",
-                    Toast.LENGTH_SHORT
-
-                ).show()
+                if (currentWorkoutPosition < workoutList?.size!! -1){
+                    restSetup()
+                }else{
+                    Toast.makeText(
+                        this@ExerciseActivity,
+                        "Congrats! You have completed the workot",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }.start()
     }
