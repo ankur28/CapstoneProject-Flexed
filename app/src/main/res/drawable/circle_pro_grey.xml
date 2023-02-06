@@ -8,7 +8,6 @@
         android:useLevel="false"
      >
         <solid android:color="#D4DEE7"/>
-
     </shape>
 </item>
 </layer-list>
