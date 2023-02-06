@@ -43,4 +43,5 @@ class WorkoutModel(
     fun updateisChecked(isChecked: Boolean){
         this.isChecked=isChecked
     }
+
 }
