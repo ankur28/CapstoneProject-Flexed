@@ -1,6 +1,6 @@
 # Flexed
 
-A 7-min Workout App which allows the user to workout following the app with timers and helps keep track of the history of workouts to maintain their streak of workouts. It also has BMI Calculator to help and check BMI.
+A Workout App which allows the user to workout following the app with timers and helps keep track of the history of workouts to maintain their streak of workouts. It also has BMI Calculator to help and check BMI.
 
 # Team (Group 82 CS)
 - Ankur Kalson
