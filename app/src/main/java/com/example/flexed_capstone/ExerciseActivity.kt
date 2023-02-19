@@ -153,7 +153,7 @@ try{
             tts!!.shutdown()
         }
         if(playerworkout != null){
-            playerworkout!!.stop()ç
+            playerworkout!!.stop()
         }
 
         binding = null
