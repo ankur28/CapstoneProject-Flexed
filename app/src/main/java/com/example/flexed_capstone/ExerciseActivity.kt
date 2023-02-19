@@ -1,5 +1,7 @@
 package com.example.flexed_capstone
 
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -22,7 +24,7 @@ private var timerest: CountDownTimer? = null
     //workout model
     private var workoutList:ArrayList<WorkoutModel>? = null
     private var currentWorkoutPosition = -1
-
+     private var playerworkout: MediaPlayer? = null
     private var tts: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +48,14 @@ private var timerest: CountDownTimer? = null
 restSetup()
     }
     private fun restSetup(){
-
+try{
+    val soundU = Uri.parse("android.resource://com.example.flexed_capstone/" + R.raw.press_start)
+    playerworkout = MediaPlayer.create(applicationContext, soundU)
+    playerworkout?.isLooping = false
+    playerworkout?.start()
+}catch (e: Exception){
+    e.printStackTrace()
+}
         binding?.flProgress?.visibility = View.VISIBLE
 
         binding?.tvTitleTextView?.visibility =View.VISIBLE
@@ -110,7 +119,7 @@ restSetup()
         exerciseTime = object : CountDownTimer(30000, 1000){
             override fun onTick(p0: Long) {
                 progExercise++
-                binding?.ProBarExercise?.progress = 30 - progExercise
+                 binding?.ProBarExercise?.progress = 30 - progExercise
                 binding?.tvTimeExercise?.text = (30 - progExercise).toString()
             }
 
@@ -120,7 +129,7 @@ restSetup()
                 }else{
                     Toast.makeText(
                         this@ExerciseActivity,
-                        "Congrats! You have completed the workot",
+                        "Congrats! You have completed the workout",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -142,6 +151,9 @@ restSetup()
         if(tts != null){
             tts!!.stop()
             tts!!.shutdown()
+        }
+        if(playerworkout != null){
+            playerworkout!!.stop()ç
         }
 
         binding = null
