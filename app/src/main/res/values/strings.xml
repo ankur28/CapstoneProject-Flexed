@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Flexed</string>
+    <string name="customdialog"> Do you really want to give up on your workout now, considering all the progress you ve made so far?</string>
     <string name="start_image">start image</string>
 </resources>

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding?.flStart?.setOnClickListener{
             val intent = Intent(this, ExerciseActivity::class.java)
             startActivity(intent)
-            Toast.makeText(this@MainActivity, "Start pressed",Toast.LENGTH_SHORT).show()
+
         }
     }
 

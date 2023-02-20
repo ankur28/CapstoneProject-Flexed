@@ -1,5 +1,7 @@
 package com.example.flexed_capstone
 
+import android.app.Dialog
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flexed_capstone.databinding.ActivityExerciseBinding
+import com.example.flexed_capstone.databinding.ActivityLastBinding
+import com.example.flexed_capstone.databinding.LayoutBackBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -21,7 +25,8 @@ private var timerest: CountDownTimer? = null
 
     private var exerciseTime : CountDownTimer? = null
     private var progExercise = 0
-
+    private var  exerciseHrTime: Long = 1
+    private var  restHrTime: Long = 1
     //workout model
     private var workoutList:ArrayList<WorkoutModel>? = null
     private var currentWorkoutPosition = -1
@@ -39,7 +44,9 @@ private var timerest: CountDownTimer? = null
         if(supportActionBar != null){
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
-
+        binding?.toolbarExerciseActivity?.setNavigationOnClickListener {
+            customBackBtn()
+        }
         //workout list
         workoutList= Constants.exerciseList()
 
@@ -49,6 +56,26 @@ private var timerest: CountDownTimer? = null
         }
         restSetup()
         setupWorkoutStatusRecyclerView()
+    }
+
+    override fun onBackPressed() {
+        customBackBtn()
+        //super.onBackPressed()
+    }
+    private fun customBackBtn(){
+        val customPage = Dialog(this)
+        val customBinding = LayoutBackBinding.inflate(layoutInflater)
+        customPage.setContentView(customBinding.root)
+        customPage.setCanceledOnTouchOutside(false)
+        customBinding.btnLastY.setOnClickListener{
+this@ExerciseActivity.finish()
+            customPage.dismiss()
+        }
+        customBinding.btnLastN.setOnClickListener{
+            customPage.dismiss()
+        }
+        customPage.show()
+
     }
     private fun restSetup(){
         try{
@@ -104,7 +131,7 @@ private var timerest: CountDownTimer? = null
     }
     private fun setProBar(){
         binding?.ProBar?.progress = progresRest
-        timerest = object : CountDownTimer(10000, 1000){
+        timerest = object : CountDownTimer(restHrTime*1000, 1000){
             override fun onTick(p0: Long) {
                progresRest++
                 binding?.ProBar?.progress = 10 - progresRest
@@ -121,7 +148,7 @@ private var timerest: CountDownTimer? = null
     }
     private fun setExerciseBar(){
         binding?.ProBarExercise?.progress = progExercise
-        exerciseTime = object : CountDownTimer(30000, 1000){
+        exerciseTime = object : CountDownTimer(exerciseHrTime*1000, 1000){
             override fun onTick(p0: Long) {
                 progExercise++
                  binding?.ProBarExercise?.progress = 30 - progExercise
@@ -129,17 +156,16 @@ private var timerest: CountDownTimer? = null
             }
 
             override fun onFinish() {
-                workoutList!![currentWorkoutPosition].updateIsFinished(true)
-                workoutList!![currentWorkoutPosition].updateIsChecked(false)
-                workoutStatusAdapter!!.notifyDataSetChanged()
+
                 if (currentWorkoutPosition < workoutList?.size!! -1){
+                    workoutList!![currentWorkoutPosition].updateIsFinished(true)
+                    workoutList!![currentWorkoutPosition].updateIsChecked(false)
+                    workoutStatusAdapter!!.notifyDataSetChanged()
                     restSetup()
                 }else{
-                    Toast.makeText(
-                        this@ExerciseActivity,
-                        "Congrats! You have completed the workout",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                   finish()
+                    val intent = Intent(this@ExerciseActivity, LastActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }.start()
