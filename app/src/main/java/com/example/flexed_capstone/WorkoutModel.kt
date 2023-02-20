@@ -1,7 +1,5 @@
 package com.example.flexed_capstone
 
-import android.media.Image
-
 
 class WorkoutModel(
 
@@ -31,16 +29,16 @@ class WorkoutModel(
     fun updatePic(pic:Int){
         this.pic =pic
     }
-    fun getisFinished():Boolean{
+    fun getIsFinished():Boolean{
         return isFinished
     }
-    fun updateisFinished(isFinished: Boolean){
+    fun updateIsFinished(isFinished: Boolean){
         this.isFinished=isFinished
     }
-    fun getisChecked():Boolean{
+    fun getIsChecked():Boolean{
         return isChecked
     }
-    fun updateisChecked(isChecked: Boolean){
+    fun updateIsChecked(isChecked: Boolean){
         this.isChecked=isChecked
     }
 }
