@@ -9,6 +9,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flexed_capstone.databinding.ActivityExerciseBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -27,6 +28,7 @@ private var timerest: CountDownTimer? = null
      private var playerworkout: MediaPlayer? = null
     private var tts: TextToSpeech? = null
 
+    private var workoutStatusAdapter: WorkoutStatusAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,37 +47,39 @@ private var timerest: CountDownTimer? = null
         binding?.toolbarExerciseActivity?.setNavigationOnClickListener {
             onBackPressed()
         }
-restSetup()
+        restSetup()
+        setupWorkoutStatusRecyclerView()
     }
     private fun restSetup(){
-try{
-    val soundU = Uri.parse("android.resource://com.example.flexed_capstone/" + R.raw.press_start)
-    playerworkout = MediaPlayer.create(applicationContext, soundU)
-    playerworkout?.isLooping = false
-    playerworkout?.start()
-}catch (e: Exception){
-    e.printStackTrace()
-}
-        binding?.flProgress?.visibility = View.VISIBLE
-
-        binding?.tvTitleTextView?.visibility =View.VISIBLE
-        binding?.tvWorkout?.visibility= View.INVISIBLE
-        binding?.flExercise?.visibility = View.INVISIBLE
-
-        binding?.wimage?.visibility= View.INVISIBLE
-
-        binding?.tvnextWorkout?.visibility=View.VISIBLE
-        binding?.tvnextWorkoutName?.visibility=View.VISIBLE
-
-        if(timerest != null){
-            timerest?.cancel()
-            progresRest = 0
+        try{
+            val soundU = Uri.parse("android.resource://com.example.flexed_capstone/" + R.raw.press_start)
+            playerworkout = MediaPlayer.create(applicationContext, soundU)
+            playerworkout?.isLooping = false
+            playerworkout?.start()
+        }catch (e: Exception){
+            e.printStackTrace()
         }
-
-        binding?.tvnextWorkoutName?.text = workoutList!![currentWorkoutPosition +1].getName()
-        setProBar()
+            binding?.flProgress?.visibility = View.VISIBLE
+            binding?.tvTitleTextView?.visibility =View.VISIBLE
+            binding?.tvWorkout?.visibility= View.INVISIBLE
+            binding?.flExercise?.visibility = View.INVISIBLE
+            binding?.wimage?.visibility= View.INVISIBLE
+            binding?.tvnextWorkout?.visibility=View.VISIBLE
+            binding?.tvnextWorkoutName?.visibility=View.VISIBLE
+            if(timerest != null){
+                timerest?.cancel()
+                progresRest = 0
+            }
+            binding?.tvnextWorkoutName?.text = workoutList!![currentWorkoutPosition +1].getName()
+            setProBar()
     }
 
+
+    private fun setupWorkoutStatusRecyclerView(){
+        binding?.workoutStatusRecyclerView?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        workoutStatusAdapter = WorkoutStatusAdapter(workoutList!!)
+        binding?.workoutStatusRecyclerView?.adapter = workoutStatusAdapter
+    }
     private fun setupExercise(){
         binding?.flProgress?.visibility = View.INVISIBLE
 
@@ -108,8 +112,9 @@ try{
             }
 
             override fun onFinish() {
-
                 currentWorkoutPosition++
+                workoutList!![currentWorkoutPosition].updateIsChecked(true)
+                workoutStatusAdapter!!.notifyDataSetChanged()
                 setupExercise()
             }
         }.start()
@@ -124,6 +129,9 @@ try{
             }
 
             override fun onFinish() {
+                workoutList!![currentWorkoutPosition].updateIsFinished(true)
+                workoutList!![currentWorkoutPosition].updateIsChecked(false)
+                workoutStatusAdapter!!.notifyDataSetChanged()
                 if (currentWorkoutPosition < workoutList?.size!! -1){
                     restSetup()
                 }else{

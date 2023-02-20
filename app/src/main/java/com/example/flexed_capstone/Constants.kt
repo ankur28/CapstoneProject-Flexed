@@ -6,7 +6,7 @@ object Constants {
         val workoutList = ArrayList<WorkoutModel>()
         val jumpingJacks=WorkoutModel(1,"Jumping Jacks", R.drawable.img_jumping_jacks,false,false)
         val abdominalCrunch=WorkoutModel(2,"Abdominal Crunch",R.drawable.img_abdominal_crunch,false,false)
-        val highKneesRunnig=WorkoutModel(3,"High Keens Running In Place",R.drawable.img_abdominal_crunch,false,false)
+        val highKneesRunning=WorkoutModel(3,"High Keens Running In Place",R.drawable.img_abdominal_crunch,false,false)
         val plank=WorkoutModel(4,"Plank",R.drawable.img_plank,false,false)
         val pushUp=WorkoutModel(5,"Push Up",R.drawable.img_push_up,false,false)
         val pushUpRotation=WorkoutModel(6,"Push UP And Rotation",R.drawable.img_push_up_and_rotation,false,false)
@@ -19,7 +19,7 @@ object Constants {
 
         workoutList.add(jumpingJacks)
         workoutList.add(abdominalCrunch)
-        workoutList.add(highKneesRunnig)
+        workoutList.add(highKneesRunning)
         workoutList.add(plank)
         workoutList.add(pushUp)
         workoutList.add(pushUpRotation)
