@@ -10,17 +10,16 @@ import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flexed_capstone.databinding.ActivityExerciseBinding
-import com.example.flexed_capstone.databinding.ActivityLastBinding
 import com.example.flexed_capstone.databinding.LayoutBackBinding
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Serializable {
     private var binding: ActivityExerciseBinding? = null
-private var timerest: CountDownTimer? = null
+    private var timerest: CountDownTimer? = null
     private var progresRest = 0
 
     private var exerciseTime : CountDownTimer? = null
@@ -39,6 +38,7 @@ private var timerest: CountDownTimer? = null
 
         binding = ActivityExerciseBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+        window.statusBarColor = getColor(R.color.colorAccent)
 
         setSupportActionBar(binding?.toolbarExerciseActivity)
         if(supportActionBar != null){
@@ -48,7 +48,7 @@ private var timerest: CountDownTimer? = null
             customBackBtn()
         }
         //workout list
-        workoutList= Constants.exerciseList()
+        workoutList=  intent.getSerializableExtra("dataList") as ArrayList<WorkoutModel>
 
         tts = TextToSpeech(this, this)
         binding?.toolbarExerciseActivity?.setNavigationOnClickListener {

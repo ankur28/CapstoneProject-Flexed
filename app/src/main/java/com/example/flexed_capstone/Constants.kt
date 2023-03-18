@@ -1,15 +1,15 @@
 package com.example.flexed_capstone
 
-object Constants {
-    fun exerciseList():ArrayList<WorkoutModel>{
+object Constants: java.io.Serializable {
+    fun intermediateExerciseList():ArrayList<WorkoutModel>{
 
         val workoutList = ArrayList<WorkoutModel>()
         val jumpingJacks=WorkoutModel(1,"Jumping Jacks", R.drawable.img_jumping_jacks,false,false)
         val abdominalCrunch=WorkoutModel(2,"Abdominal Crunch",R.drawable.img_abdominal_crunch,false,false)
-        val highKneesRunning=WorkoutModel(3,"High Keens Running In Place",R.drawable.img_abdominal_crunch,false,false)
+        val highKneesRunning=WorkoutModel(3,"High Knees Running In Place",R.drawable.img_abdominal_crunch,false,false)
         val plank=WorkoutModel(4,"Plank",R.drawable.img_plank,false,false)
         val pushUp=WorkoutModel(5,"Push Up",R.drawable.img_push_up,false,false)
-        val pushUpRotation=WorkoutModel(6,"Push UP And Rotation",R.drawable.img_push_up_and_rotation,false,false)
+        val pushUpRotation=WorkoutModel(6,"Push Up And Rotation",R.drawable.img_push_up_and_rotation,false,false)
         val sidePlank=WorkoutModel(7,"Side Plank",R.drawable.img_side_plank,false,false)
         val squat=WorkoutModel(8,"Squat",R.drawable.img_squat,false,false)
         val stepUpChair=WorkoutModel(9,"Step Up Onto Chair",R.drawable.img_step_up_onto_chair,false,false)
