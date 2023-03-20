@@ -19,6 +19,15 @@
         android:theme="@style/Theme.Flexed_Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".BMIActivity"
+            android:exported="false"
+            android:label="@string/title_activity_bmiactivity"
+            android:theme="@style/Theme.Flexed_Capstone.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".WorkoutPreview"
             android:exported="false" />
         <activity
