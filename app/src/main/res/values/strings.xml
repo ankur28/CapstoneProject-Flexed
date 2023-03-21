@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">Flexed</string>
+    <string name="app_name">FLEXED</string>
+    <string name="subheading">Losing never felt so good.</string>
     <string name="customdialog"> Do you really want to give up on your workout now, considering all the progress you ve made so far?</string>
     <string name="start_image">start image</string>
+    <string name="workout_type">Choose a workout type</string>
+    <string name="title_activity_bmiactivity">BMIActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

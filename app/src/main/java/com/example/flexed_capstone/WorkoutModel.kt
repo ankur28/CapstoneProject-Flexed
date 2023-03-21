@@ -9,7 +9,7 @@ class WorkoutModel(
     private var isFinished:Boolean,
     private var isChecked:Boolean
 
-)
+): java.io.Serializable
 {
     fun getId(): Int{
         return id
