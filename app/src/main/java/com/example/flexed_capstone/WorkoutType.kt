@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.example.flexed_capstone.databinding.ActivityWorkoutTypeBinding
 import java.io.Serializable
 
-class WorkoutType : AppCompatActivity(), Serializable {
+class   WorkoutType : AppCompatActivity(), Serializable {
     private var binding: ActivityWorkoutTypeBinding? = null
     private var intermediateWorkoutList:ArrayList<WorkoutModel>? = null
     private var advancedWorkoutList:ArrayList<WorkoutModel>? = null
