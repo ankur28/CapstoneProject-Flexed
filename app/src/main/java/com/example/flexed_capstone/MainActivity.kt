@@ -20,15 +20,19 @@ class MainActivity : AppCompatActivity() {
         //val startBtn : FrameLayout = findViewById(R.id.flStart)
 //        val anim = AnimationUtils.loadAnimation(applicationContext,androidx.appcompat.R.anim.abc_popup_enter)
 //        binding?.flbackgorund?.startAnimation(anim)
-        binding?.flStart?.setOnClickListener{
+        binding?.flStart?.setOnClickListener {
             val intent = Intent(this, WorkoutType::class.java)
             startActivity(intent)
 
         }
-        binding?.checkbmi?.setOnClickListener{
+        binding?.checkbmi?.setOnClickListener {
             val intent = Intent(this, BMIActivity::class.java)
             startActivity(intent)
 
+        }
+        binding?.taphistory?.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -44,7 +44,7 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="45dp"
-                android:text="Intermediate workout"
+                android:text="Workout List"
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp"
                 android:textStyle="bold"
