@@ -16,6 +16,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding =ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+        window.statusBarColor = getColor(R.color.colorAccent)
 
         setSupportActionBar(binding?.toolbarHistoryActivity)
 

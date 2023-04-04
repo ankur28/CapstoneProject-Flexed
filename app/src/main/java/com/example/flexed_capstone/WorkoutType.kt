@@ -26,11 +26,30 @@ class   WorkoutType : AppCompatActivity(), Serializable {
             onBackPressed()
         }
 
+        beginnerWorkoutList = Constants.beginnerExerciseList()
+
+        binding?.beginnerView?.setOnClickListener{
+            val intent = Intent(this, WorkoutPreview::class.java)
+            intent.putExtra("beginnerList", beginnerWorkoutList as Serializable)
+            intent.putExtra("tag",1)
+            startActivity(intent)
+
+        }
+
         intermediateWorkoutList = Constants.intermediateExerciseList()
         binding?.intermediateView?.setOnClickListener{
             val intent = Intent(this, WorkoutPreview::class.java)
             intent.putExtra("intermediateList", intermediateWorkoutList as Serializable)
             intent.putExtra("tag",2)
+            startActivity(intent)
+
+        }
+
+        advancedWorkoutList = Constants.advancedExerciseList()
+        binding?.advancedView?.setOnClickListener{
+            val intent = Intent(this, WorkoutPreview::class.java)
+            intent.putExtra("advancedList", advancedWorkoutList as Serializable)
+            intent.putExtra("tag",3)
             startActivity(intent)
 
         }

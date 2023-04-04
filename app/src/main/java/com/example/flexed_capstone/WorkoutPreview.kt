@@ -28,8 +28,14 @@ class WorkoutPreview : AppCompatActivity(), Serializable {
         }
         var  tag: Int = intent.getIntExtra("tag",0)
         when(tag){
+            1 -> {
+                workoutList = intent.getSerializableExtra("beginnerList") as ArrayList<WorkoutModel>
+            }
             2 -> {
                 workoutList = intent.getSerializableExtra("intermediateList") as ArrayList<WorkoutModel>
+            }
+            3 -> {
+                workoutList = intent.getSerializableExtra("advancedList") as ArrayList<WorkoutModel>
             }
         }
 

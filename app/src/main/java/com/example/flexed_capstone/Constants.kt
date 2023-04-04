@@ -34,7 +34,7 @@ object Constants: java.io.Serializable {
         return  workoutList
     }
 
-    fun Advanced():ArrayList<WorkoutModel>{
+    fun advancedExerciseList():ArrayList<WorkoutModel>{
 
         val workoutList = ArrayList<WorkoutModel>()
         val backpresses =WorkoutModel(1,"Backpresses", R.drawable.backpresses,false,false)
@@ -68,13 +68,13 @@ object Constants: java.io.Serializable {
     }
 
 
-    fun beginners():ArrayList<WorkoutModel>{
+    fun beginnerExerciseList():ArrayList<WorkoutModel>{
 
 
         val workoutList = ArrayList<WorkoutModel>()
         val one_leg_toe_raises=WorkoutModel(1,"One Leg Toe Raise", R.drawable.one_leg_toe_raises,false,false)
         val triceps_kickback=WorkoutModel(2,"Triceps Kickback",R.drawable.triceps_kickback,false,false)
-        val dumble_scarecrow=WorkoutModel(3,"Dumble Scarecrow",R.drawable.dumble_scarecrow,false,false)
+        val dumbbell =WorkoutModel(3,"Dumbbell Scarecrow",R.drawable.dumble_scarecrow,false,false)
         val body_weight_superman=WorkoutModel(4,"Body Weight Superman",R.drawable.body_weight_superman,false,false)
         val leg_raises=WorkoutModel(5,"Leg Raise",R.drawable.leg_raises,false,false)
         val crunches=WorkoutModel(6,"Crunches",R.drawable.crunches,false,false)
@@ -83,7 +83,7 @@ object Constants: java.io.Serializable {
 
         workoutList.add(one_leg_toe_raises)
         workoutList.add(triceps_kickback)
-        workoutList.add(dumble_scarecrow)
+        workoutList.add(dumbbell)
         workoutList.add(body_weight_superman)
         workoutList.add(leg_raises)
         workoutList.add(crunches)

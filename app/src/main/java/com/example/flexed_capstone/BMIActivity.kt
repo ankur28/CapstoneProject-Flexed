@@ -20,6 +20,7 @@ class BMIActivity : AppCompatActivity() {
         binding = ActivityBmiBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         setSupportActionBar(binding?.toolbarActivityBmi)
+        window.statusBarColor = getColor(R.color.colorAccent)
 
         if(supportActionBar != null){
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
