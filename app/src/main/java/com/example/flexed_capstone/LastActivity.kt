@@ -20,10 +20,10 @@ class LastActivity : AppCompatActivity() {
         if(supportActionBar != null){
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
-binding?.lastActivity?.setNavigationOnClickListener{
-    onBackPressed()
+        binding?.lastActivity?.setNavigationOnClickListener{
+            onBackPressed()
 
-}
+        }
         binding?.LastBtn?.setOnClickListener{
             finish()
         }

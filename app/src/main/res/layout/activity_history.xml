@@ -31,5 +31,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="COMPLETED WORKOUT"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginTop="15dp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/datesAdapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:id="@+id/noDataTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="No Data Available"
+            android:textSize="18sp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginTop="315dp"/>
+
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

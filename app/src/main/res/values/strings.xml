@@ -13,4 +13,8 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="you_have_done_it">You have done it!</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="finish">FINISH</string>
+    <string name="end">END</string>
 </resources>
